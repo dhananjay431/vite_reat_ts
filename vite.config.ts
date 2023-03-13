@@ -6,6 +6,7 @@ export default defineConfig({
   plugins: [react()],
   server: {
     proxy: {
+      "/nse": "http://localhost:3000/",
       "/com.eibus.web.soap.Gateway.wcp": {
         target: "https://adnatedev.ddns.net:8443/home/AdnateDev/",
         secure: false,
