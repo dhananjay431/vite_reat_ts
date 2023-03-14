@@ -11,8 +11,8 @@ export default function Option_table(props: any) {
     if (i.flag == flag) {
       str += "bg-warning";
     }
-    if (i[CE_PE].change < 0) str += " text-danger fw-semibold";
-    else if (i[CE_PE].change > 0) str += " text-success fw-semibold";
+    if (i[CE_PE].change < 0) str += " text-danger fw-bold";
+    else if (i[CE_PE].change > 0) str += " text-success fw-bold";
     return str;
   }
   function open_popup(row: any) {
@@ -57,19 +57,42 @@ export default function Option_table(props: any) {
           {props.data.map((i: any) => {
             return (
               <tr>
-                <td className={bg_color(i, false)}>{i?.CE?.openInterest}</td>
                 <td className={bg_color(i, false)}>
-                  {i?.CE?.changeinOpenInterest}
+                  {(i?.CE?.openInterest || 0)
+                    .toString()
+                    .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
                 </td>
-                <td className={bg_color(i, false)}>{i?.CE?.lastPrice}</td>
-                <td className="text-center" onClick={() => open_popup(i)}>
-                  {i?.strikePrice}
+                <td className={bg_color(i, false)}>
+                  {(i?.CE?.changeinOpenInterest || 0)
+                    .toString()
+                    .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
                 </td>
-                <td className={bg_color(i, true)}>{i?.PE?.lastPrice}</td>
+                <td className={bg_color(i, false)}>
+                  {(i?.CE?.lastPrice || 0)
+                    .toFixed(2)
+                    .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+                </td>
+                <td
+                  className="text-center fw-bold"
+                  onClick={() => open_popup(i)}
+                >
+                  {i?.strikePrice || 0}
+                </td>
                 <td className={bg_color(i, true)}>
-                  {i?.PE?.changeinOpenInterest}
+                  {(i?.PE?.lastPrice || 0)
+                    .toFixed(2)
+                    .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
                 </td>
-                <td className={bg_color(i, true)}>{i?.PE?.openInterest}</td>
+                <td className={bg_color(i, true)}>
+                  {(i?.PE?.changeinOpenInterest || 0)
+                    .toString()
+                    .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+                </td>
+                <td className={bg_color(i, true)}>
+                  {(i?.PE?.openInterest || 0)
+                    .toString()
+                    .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+                </td>
               </tr>
             );
           })}

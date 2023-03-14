@@ -1,7 +1,5 @@
 import Hero from "../hero";
 import { useEffect, useState } from "react";
-import { bind } from "@react-rxjs/core";
-import { createSignal } from "@react-rxjs/utils";
 import { interval, mergeMap, Subject, tap } from "rxjs";
 
 export default function Table_a1(props: any) {
