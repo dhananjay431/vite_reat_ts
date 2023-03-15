@@ -1,12 +1,16 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
-import Dashboard from "./pages/Dashboard";
-import Indices from "./pages/Indices";
-import Option from "./pages/Option";
+//import Dashboard from "./pages/Dashboard";
+// import Indices from "./pages/Indices";
+// import Option from "./pages/Option";
 import Nav from "./pages/Nav";
 import App from "./App";
 import "./index.css";
+
+const Dashboard = React.lazy(() => import("./pages/Dashboard"));
+const Indices = React.lazy(() => import("./pages/Indices"));
+const Option = React.lazy(() => import("./pages/Option"));
 
 const router = createBrowserRouter([
   {
@@ -27,15 +31,27 @@ const router = createBrowserRouter([
     children: [
       {
         path: "dashboard",
-        element: <Dashboard />,
+        element: (
+          <React.Suspense fallback={<>...</>}>
+            <Dashboard />
+          </React.Suspense>
+        ),
       },
       {
         path: "indices",
-        element: <Indices />,
+        element: (
+          <React.Suspense fallback={<>...</>}>
+            <Indices />
+          </React.Suspense>
+        ),
       },
       {
         path: "option",
-        element: <Option />,
+        element: (
+          <React.Suspense fallback={<>...</>}>
+            <Option />
+          </React.Suspense>
+        ),
       },
     ],
   },

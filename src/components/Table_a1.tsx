@@ -31,7 +31,17 @@ export default function Table_a1(props: any) {
             return (
               <tr>
                 <td>{i + 1}</td>
-                <td>{d.symbol}</td>
+                <td>
+                  <a
+                    href={
+                      "https://www.tradingview.com/chart/ceDp98UV/?symbol=NSE:" +
+                      d.symbol
+                    }
+                    target="_blank"
+                  >
+                    {d.symbol}
+                  </a>{" "}
+                </td>
                 <td>{d?.meta?.industry}</td>
                 <td>{d.ffmc}</td>
                 <td>{d.open}</td>
