@@ -85,7 +85,7 @@ export default function Option() {
             className="btn btn-primary btn-sm"
             onClick={() => index_change(data.selected_index)}
           >
-            ref
+            <i className="fa-sharp fa-solid fa-arrows-rotate"></i>
           </button>
         </div>
         <div className="col-12"></div>

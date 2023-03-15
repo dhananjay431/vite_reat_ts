@@ -1,10 +1,30 @@
 
-body{
-    background:
+
+
+body {
+  font-family: "Poppins", sans-serif;
+  font-size: 0.7rem;
+  font-weight: 500 !important;
+
+
+        background:
       linear-gradient(135deg,#0000 18.75%,#fbfbfb 0 31.25%,#0000 0),
       repeating-linear-gradient(45deg,#fbfbfb -6.25% 6.25%,#ffffff 0 18.75%);
 background-size: 64px 64px;
 }
+.fw-semibold {
+  font-weight: 500 !important;
+}
+.navbar {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+     padding-top: 0.0rem;
+     padding-bottom: 0.0rem;
+}
+
 .loader {
   position: fixed;
   left: 0px;

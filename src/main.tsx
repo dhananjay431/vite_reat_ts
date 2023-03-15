@@ -5,9 +5,11 @@ import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 // import Indices from "./pages/Indices";
 // import Option from "./pages/Option";
 import Nav from "./pages/Nav";
-import App from "./App";
+// import App from "./App";
 import "./index.css";
+import "./assets/css/all.min.css";
 
+const App = React.lazy(() => import("./App"));
 const Dashboard = React.lazy(() => import("./pages/Dashboard"));
 const Indices = React.lazy(() => import("./pages/Indices"));
 const Option = React.lazy(() => import("./pages/Option"));

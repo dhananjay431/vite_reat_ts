@@ -45,23 +45,26 @@ export default function Nav() {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <Link className="nav-link text-white" to={`/app/dashboard`}>
+              <Link
+                className="nav-link fs-6 text-white active"
+                to={`/app/dashboard`}
+              >
                 Home
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link text-white" to={`/app/indices`}>
+              <Link className="nav-link fs-6 text-white" to={`/app/indices`}>
                 Indices
               </Link>
             </li>{" "}
             <li className="nav-item">
-              <Link className="nav-link text-white" to={`/app/option`}>
+              <Link className="nav-link fs-6 text-white" to={`/app/option`}>
                 Option
               </Link>
             </li>
             <li className="nav-item dropdown">
               <a
-                className="nav-link dropdown-toggle text-white"
+                className="nav-link fs-6 dropdown-toggle text-white"
                 href="#"
                 role="button"
                 data-bs-toggle="dropdown"
@@ -91,7 +94,7 @@ export default function Nav() {
               </ul>
             </li>
             <li className="nav-item">
-              <a className="nav-link disabled text-white">Disabled</a>
+              <a className="nav-link fs-6 disabled text-white">Disabled</a>
             </li>
           </ul>
           <form className="d-flex" role="search">

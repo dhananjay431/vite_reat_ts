@@ -52,15 +52,37 @@ export default function Dashboard() {
   }
   return (
     <div className="row">
+      <div className="col-12 col-sm-3 col-md-3 mt-1">
+        <select
+          className="form-select form-select-sm"
+          value={data.drop_selected}
+          onChange={(ev) => {
+            if (ev.target.value != "" && ev.target.value != undefined)
+              drop_change(ev.target.value);
+          }}
+        >
+          <option>--select--</option>
+          {data.allIndices != undefined && data.allIndices.data.length > 0
+            ? data.allIndices.data.map((d: any) => {
+                return <option value={d.indexSymbol}>{d.index}</option>;
+              })
+            : ""}
+        </select>
+      </div>
+      <div className="col-12 col-sm-3 col-md-3 mt-1">
+        <button
+          className="btn btn-primary btn-sm"
+          onClick={() => drop_change(data.drop_selected)}
+        >
+          <i className="fa-sharp fa-solid fa-arrows-rotate"></i>
+        </button>
+      </div>
       <div className="col-12">
-        {data_option()}
-        <div className="col-12">
-          <div id="container"></div>
-        </div>
+        <div id="container"></div>
+      </div>
 
-        <div className="col-12">
-          <Dash_table data={data}></Dash_table>
-        </div>
+      <div className="col-12">
+        <Dash_table data={data}></Dash_table>
       </div>
     </div>
   );
