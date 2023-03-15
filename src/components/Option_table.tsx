@@ -28,6 +28,7 @@ export default function Option_table(props: any) {
         })
       )
       .subscribe((resp: any) => {
+        debugger;
         Store.data_swap.next({ row: row, resp: resp, pup_flag: true });
       });
   }

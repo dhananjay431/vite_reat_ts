@@ -11,19 +11,19 @@ export default function Table_a1(props: any) {
             <th className="text-center">#</th>
             <th className="text-center">symbol</th>
             <th className="text-center">industry</th>
-            <th className="text-center">ffmc</th>
-            <th>open</th>
-            <th>dayHigh</th>
-            <th>dayLow</th>
-            <th className="text-center">pClose</th>
-            <th className="text-center">52WL%</th>
-            <th className="text-center">Close</th>
-            <th className="text-center">52WH%</th>
-            <th className="text-center">NH</th>
-            <th className="text-center">NW</th>
-            <th className="text-center">D%</th>
-            <th className="text-center">30D%</th>
-            <th className="text-center">365D%</th>
+            <th className="text-end">ffmc</th>
+            <th className="text-end">open</th>
+            <th className="text-end">dayHigh</th>
+            <th className="text-end">dayLow</th>
+            <th className="text-end">pClose</th>
+            <th className="text-end">52WL%</th>
+            <th className="text-end">Close</th>
+            <th className="text-end">52WH%</th>
+            <th className="text-end">NH</th>
+            <th className="text-end">NW</th>
+            <th className="text-end">D%</th>
+            <th className="text-end">30D%</th>
+            <th className="text-end">365D%</th>
           </tr>
         </thead>
         <tbody>
@@ -43,19 +43,77 @@ export default function Table_a1(props: any) {
                   </a>{" "}
                 </td>
                 <td>{d?.meta?.industry}</td>
-                <td>{d.ffmc}</td>
-                <td>{d.open}</td>
-                <td>{d.dayHigh}</td>
-                <td>{d.dayLow}</td>
-                <td>{d.previousClose}</td>
-                <td>{d.yearLow}</td>
-                <td>{d.lastPrice}</td>
-                <td>{d.yearHigh}</td>
-                <td>{Number(d.nearWKH).toFixed(2)}</td>
-                <td>{Number(d.nearWKL).toFixed(2)}</td>
-                <td>{d.pChange}</td>
-                <td>{d.perChange30d}</td>
-                <td>{d.perChange365d}</td>
+                <td className="text-end">
+                  {Number(d.ffmc / 1000000000).toFixed(2)}
+                </td>
+                <td className="text-end">{d.open}</td>
+                <td className="text-end">{d.dayHigh}</td>
+                <td className="text-end">{d.dayLow}</td>
+                <td
+                  className={
+                    d.lastPrice > d.previousClose
+                      ? "text-end text-success"
+                      : "text-danger text-end"
+                  }
+                >
+                  {d.previousClose}
+                </td>
+                <td className="text-end">{d.yearLow}</td>
+                <td
+                  className={
+                    d.pChange > 0
+                      ? "text-end text-success"
+                      : "text-danger text-end"
+                  }
+                >
+                  {d.lastPrice}
+                </td>
+                <td className="text-end">{d.yearHigh}</td>
+                <td
+                  className={
+                    d.nearWKH >= 30
+                      ? "text-end text-success"
+                      : "text-danger text-end"
+                  }
+                >
+                  {Number(d.nearWKH).toFixed(2)}
+                </td>
+                <td
+                  className={
+                    Number(d.nearWKL) <= -30
+                      ? "text-end text-success"
+                      : "text-danger text-end"
+                  }
+                >
+                  {Number(d.nearWKL).toFixed(2)}
+                </td>
+                <td
+                  className={
+                    d.pChange > 0
+                      ? "text-end text-success"
+                      : "text-danger text-end"
+                  }
+                >
+                  {d.pChange}
+                </td>
+                <td
+                  className={
+                    d.perChange30d > 0
+                      ? "text-end text-success"
+                      : "text-danger text-end"
+                  }
+                >
+                  {d.perChange30d}
+                </td>
+                <td
+                  className={
+                    d.perChange365d > 0
+                      ? "text-end text-success"
+                      : "text-danger text-end"
+                  }
+                >
+                  {d.perChange365d}
+                </td>
               </tr>
             );
           })}

@@ -15,6 +15,7 @@ export default function Option_table_popup(props: any) {
         })
       )
       .subscribe((resp: any) => {
+        debugger;
         Store.data_swap.next({
           row: props.data.row,
           resp: resp,

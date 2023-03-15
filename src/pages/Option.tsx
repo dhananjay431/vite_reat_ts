@@ -18,10 +18,12 @@ export default function Option() {
   useEffect(() => {
     let dd = Store.data_swap.subscribe((resp: any) => {
       console.log("data_swap=>", resp);
+      debugger;
       setPopupData({ ...resp });
       Store.put_call_chart({ data: resp.resp, _data: resp.row }, "container");
       if (resp.pup_flag == true) $("#btn_exampleModal").click();
     });
+    debugger;
     dis.push(dd);
     let d = forkJoin([
       Store.master_quote,
@@ -34,7 +36,15 @@ export default function Option() {
       console.log(data);
     });
     dis.push(d);
-    return () => dis.map((d: any) => d.unsubscribe());
+    return () => {
+      debugger;
+      Store.data_swap.next({});
+      // for (let i = 0; i < dis.length; i++) {
+      //   console.log("iii=>", i);
+      //   dis[i].unsubscribe();
+      // }
+      // dis.map((d: any) => d.unsubscribe());
+    };
   }, []);
   function show() {
     console.log(data);
